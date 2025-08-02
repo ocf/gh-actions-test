@@ -1,0 +1,20 @@
+name: Test nix deploy workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      hosts:
+        description: 'Comma separated hostnames or tags (ex: @desktops) to deploy'
+        required: true
+        type: string
+
+
+jobs:
+
+  print-inputs_and_context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the hosts
+        run: echo "The hosts are ${{ inputs.hosts }}"
+      - name: Print the context
+        run: echo "The full event context ${{ toJSON(github.event) }}"
