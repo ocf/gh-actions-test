@@ -16,5 +16,5 @@ jobs:
     steps:
       - name: Print the hosts
         run: echo "The hosts are ${{ inputs.hosts }}"
-      - name: Print the context
-        run: echo "The full event context ${{ github.event.ref }}"
+      - name: Print the branch name
+        run: echo "The branch is ${{ github.ref_name }}"
