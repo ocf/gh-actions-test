@@ -16,5 +16,11 @@ jobs:
     steps:
       - name: Print the hosts
         run: echo "The hosts are ${{ inputs.hosts }}"
+      - name: write to file
+        run: echo "Test does this work ${{ github.workpace }}" > ${{ github.workspace }}/testfile
+      - name: cat file
+        run: cat testfile
+      - name: cat file another way
+        run: cat ${{ github.workspace }}/testfile
       - name: Print the context
         run: echo "The full event context ${{ toJSON(github.event) }}"
