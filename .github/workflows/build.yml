@@ -17,7 +17,7 @@ jobs:
       - name: Print the hosts
         run: echo "The hosts are ${{ inputs.hosts }}"
       - name: write to file
-        run: echo "Test does this work ${{ github.workpace }}" > ${{ github.workspace }}/testfile
+        run: echo "Test does this work $GITHUB_WORKSPACE" > ${{ github.workspace }}/testfile
       - name: cat file
         run: cat testfile
       - name: cat file another way
