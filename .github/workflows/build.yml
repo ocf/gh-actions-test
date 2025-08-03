@@ -18,8 +18,15 @@ jobs:
         run: echo "The hosts are ${{ inputs.hosts }}"
       - name: write to file
         run: echo "Test does this work $GITHUB_WORKSPACE" > ${{ github.workspace }}/testfile
+      - name: write SSH Config File
+        run: |
+          echo "Host *
+                  IdentityFile $GITHUB_WORKSPACE/testfile
+                " >> ${{ github.workspace }}/ssh_config
       - name: cat file
         run: cat testfile
+      - name: cat configfile
+        run: cat ${{ github.workspace }}/ssh_config
       - name: cat file another way
         run: cat ${{ github.workspace }}/testfile
       - name: Print the context
